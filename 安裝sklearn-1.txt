@@ -1,0 +1,44 @@
+﻿scikit-learn是一個對其他套件依賴性很高的套件,
+只要依賴的套件有缺一個就會安裝失敗
+簡而言之, 安裝numpy+scipy成功後就可以安裝scikit-learn
+pip install -U scikit-learn
+
+安裝失敗的時候仔細看錯誤是缺了啥就給他裝啥..
+scikit-learn需要的必要套件有2個:numpy, scipy
+pip install numpy
+pip install scipy
+
+而安裝numpy還需要3個庫:gfortran, blas, lapack
+yum install gcc-gfortran
+yum install blas-devel
+yum install lapack-devel
+
+接著可能還需要一個matplotlib, 這是用來輸出數據圖表的
+pip install matplotlib
+但安裝matplotlib還需要2個庫:freetype, png
+yum install freetype-devel python-freetype
+yum install libpng libpng-devel python-pypng
+
+另外這些檔案有點大, pip安裝的時候有可能報timeout的錯誤,
+可以修改timeout的等待時間長度:
+pip --default-timeout=100 install -U pip
+
+延長等待時間還是報timeout錯誤就只能多試幾次了
+網路慢就只能等它自己變好再試試
+總之, 出現錯誤就去看懂錯誤在說啥, 針對錯誤報告的內容修正就好了
+
+補充: 安裝pylab
+一個超大型套件, 包含numpy, scipy, matplotlib以及一些支援sklearn的東西
+pip install pylab
+
+但過程中可能會出現如找不到bz2或是找不到jpeg(指jpeg開發套件)等錯誤
+安裝jpeg相關開發套件:
+yum install libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
+
+安裝bz2...很麻煩, 因為它是系統檔
+yum install -y bzip2-devel zlib zlib-devel openssl openssl-devel
+然後重新編譯python才會生效...
+就是configure, make, make install,
+不知道怎麼做得可以參考我之前寫的pyspark_jupyter裡面的第四節,這裡不贅述
+
+還是前面那句老話, 缺什麼就找什麼裝給它用就對了...
