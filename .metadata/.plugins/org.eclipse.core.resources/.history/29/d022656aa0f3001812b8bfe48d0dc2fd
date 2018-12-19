@@ -1,0 +1,12 @@
+
+public class EnumDemo1 {
+	private enum Suit {
+		CLUBS, DIAMONDS, HEARTS, SPADES
+	}
+	public static void main(String[] args) {
+		System.out.println(Suit.CLUBS);
+		
+		
+	}
+
+}
